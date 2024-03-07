@@ -2956,7 +2956,7 @@ var _client = require("react-dom/client");
 var _indexScss = require("./index.scss");
 const DonkeyArchiveApplication = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "donkeyarchive",
+        className: "donkey-archive",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
             children: "Donkey Archive"
         }, void 0, false, {

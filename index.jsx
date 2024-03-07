@@ -3,7 +3,7 @@ import "./index.scss";
 
 const DonkeyArchiveApplication = () => {
   return (
-    <div className="donkeyarchive">
+    <div className="donkey-archive">
       <h1>Donkey Archive</h1>
     </div>
   );
