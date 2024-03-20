@@ -1,6 +1,6 @@
 import React from "react";
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, onMovieSelect }) {
   return (
     <div>
       <h1>{movie.title}</h1>

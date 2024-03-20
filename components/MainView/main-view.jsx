@@ -1,10 +1,10 @@
 import React from "react";
-import { MovieCard } from "../MovieCard/movie-card";
-import { MovieView } from "../MovieView/movie-view";
+import MovieCard from "../MovieCard/movie-card";
+import MovieView from "../MovieView/movie-view";
 
 class MainView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       movies: [
         {
@@ -35,6 +35,8 @@ class MainView extends React.Component {
 
       selectedMovie: null,
     };
+
+    this.onMovieSelect = this.onMovieSelect.bind(this);
   }
 
   onMovieSelect(movie) {
