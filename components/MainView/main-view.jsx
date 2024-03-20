@@ -62,7 +62,7 @@ class MainView extends React.Component {
           <MovieCard
             key={movie.id}
             movie={movie}
-            onClick={() => this.onMovieSelect(movie)}
+            onMovieSelect={() => this.onMovieSelect(movie)}
           />
         ))}
       </div>

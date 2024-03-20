@@ -27378,7 +27378,7 @@ class MainView extends (0, _reactDefault.default).Component {
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
                     movie: movie,
-                    onClick: ()=>this.onMovieSelect(movie)
+                    onMovieSelect: ()=>this.onMovieSelect(movie)
                 }, movie.id, false, {
                     fileName: "components/MainView/main-view.jsx",
                     lineNumber: 62,
@@ -27503,7 +27503,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 class MovieView extends (0, _reactDefault.default).Component {
     render() {
-        const { movie } = this.props;
+        const { movie, onBackClick } = this.props;
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
