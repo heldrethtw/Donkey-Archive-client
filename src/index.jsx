@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import "./index.scss";
+import MainView from "../components/MainView/main-view";
 
 const DonkeyArchiveApplication = () => {
   return (
@@ -12,4 +13,4 @@ const DonkeyArchiveApplication = () => {
 const container = document.querySelector("#root");
 const root = createRoot(container);
 
-root.render(<DonkeyArchiveApplication />);
+root.render(<MainView />);
