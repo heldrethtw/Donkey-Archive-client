@@ -27339,40 +27339,43 @@ class MainView extends (0, _reactDefault.default).Component {
                     id: 1,
                     title: "Parasite",
                     description: "A poor family cons its way into a wealthy family's home",
-                    image: "https://www.imdb.com/title/tt6751668/mediaviewer/rm4284241408/"
+                    image: "https://image.tmdb.org/t/p/original/5aEt0PK9YRiTXNU2M03tTTveS9i.jpg"
                 },
                 {
                     id: 2,
                     title: "Ghost Dog",
                     description: "A man who lives by the code of the samurai in modern Jersey City as a retained assassin for the Mafia",
-                    image: "https://www.imdb.com/title/tt0165798/mediaviewer/rm4284241408/"
+                    image: "https://image.tmdb.org/t/p/original/hrcfYUGvSQcLfRjqxvDpvCLnYXX.jpg"
                 },
                 {
                     id: 3,
                     title: "El Conde",
                     description: "A morose satire about the seemingly immortal disease of dictators throughout history",
-                    image: "https://www.imdb.com/title/tt21113540/mediaviewer/rm2652067841/?ref_=tt_ov_i"
+                    image: "https://image.tmdb.org/t/p/original/lpgsjfL8vOfPzmLM4u5M8ivSK5A.jpg"
                 }
             ],
+            selectedMovie: null,
             selectedMovie: null
         };
         this.onMovieSelect = this.onMovieSelect.bind(this);
     }
     onMovieSelect(movie) {
         this.setState({
-            selectedMovie: movie
+            selectedMovie: movie,
+            selectedMovieID: movie.id
         });
     }
     render() {
-        const { movies, selectedMovie } = this.state;
+        const { movies, selectedMovie, selectedMovieID } = this.state;
         if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewDefault.default), {
             movie: selectedMovie,
             onBackClick: ()=>this.setState({
-                    selectedMovie: null
+                    selectedMovie: null,
+                    selectedMovieID: null
                 })
         }, void 0, false, {
             fileName: "components/MainView/main-view.jsx",
-            lineNumber: 52,
+            lineNumber: 54,
             columnNumber: 9
         }, this);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27381,12 +27384,12 @@ class MainView extends (0, _reactDefault.default).Component {
                     onMovieSelect: ()=>this.onMovieSelect(movie)
                 }, movie.id, false, {
                     fileName: "components/MainView/main-view.jsx",
-                    lineNumber: 62,
+                    lineNumber: 66,
                     columnNumber: 11
                 }, this))
         }, void 0, false, {
             fileName: "components/MainView/main-view.jsx",
-            lineNumber: 60,
+            lineNumber: 64,
             columnNumber: 7
         }, this);
     }
@@ -27410,7 +27413,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-function MovieCard({ movie, onMovieSelect }) {
+function MovieCard({ movie, onMovieSelect, showImage }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -27427,12 +27430,12 @@ function MovieCard({ movie, onMovieSelect }) {
                 lineNumber: 7,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+            showImage && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 src: movie.image
             }, void 0, false, {
                 fileName: "components/MovieCard/movie-card.jsx",
                 lineNumber: 8,
-                columnNumber: 7
+                columnNumber: 21
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: ()=>onMovieSelect(movie),

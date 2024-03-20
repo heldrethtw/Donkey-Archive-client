@@ -13,7 +13,7 @@ class MainView extends React.Component {
           description:
             "A poor family cons its way into a wealthy family's home",
           image:
-            "https://www.imdb.com/title/tt6751668/mediaviewer/rm4284241408/",
+            "https://image.tmdb.org/t/p/original/5aEt0PK9YRiTXNU2M03tTTveS9i.jpg",
         },
         {
           id: 2,
@@ -21,7 +21,7 @@ class MainView extends React.Component {
           description:
             "A man who lives by the code of the samurai in modern Jersey City as a retained assassin for the Mafia",
           image:
-            "https://www.imdb.com/title/tt0165798/mediaviewer/rm4284241408/",
+            "https://image.tmdb.org/t/p/original/hrcfYUGvSQcLfRjqxvDpvCLnYXX.jpg",
         },
         {
           id: 3,
@@ -29,10 +29,11 @@ class MainView extends React.Component {
           description:
             "A morose satire about the seemingly immortal disease of dictators throughout history",
           image:
-            "https://www.imdb.com/title/tt21113540/mediaviewer/rm2652067841/?ref_=tt_ov_i",
+            "https://image.tmdb.org/t/p/original/lpgsjfL8vOfPzmLM4u5M8ivSK5A.jpg",
         },
       ],
 
+      selectedMovie: null,
       selectedMovie: null,
     };
 
@@ -42,16 +43,19 @@ class MainView extends React.Component {
   onMovieSelect(movie) {
     this.setState({
       selectedMovie: movie,
+      selectedMovieID: movie.id,
     });
   }
 
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie, selectedMovieID } = this.state;
     if (selectedMovie) {
       return (
         <MovieView
           movie={selectedMovie}
-          onBackClick={() => this.setState({ selectedMovie: null })}
+          onBackClick={() =>
+            this.setState({ selectedMovie: null, selectedMovieID: null })
+          }
         />
       );
     }
