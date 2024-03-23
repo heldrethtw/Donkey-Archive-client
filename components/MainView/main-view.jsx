@@ -1,77 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MovieCard from "../MovieCard/movie-card";
 import MovieView from "../MovieView/movie-view";
 
-class MainView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movies: [
-        {
-          id: 1,
-          title: "Parasite",
-          description:
-            "A poor family cons its way into a wealthy family's home",
-          image:
-            "https://image.tmdb.org/t/p/original/5aEt0PK9YRiTXNU2M03tTTveS9i.jpg",
-        },
-        {
-          id: 2,
-          title: "Ghost Dog",
-          description:
-            "A man who lives by the code of the samurai in modern Jersey City as a retained assassin for the Mafia",
-          image:
-            "https://image.tmdb.org/t/p/original/hrcfYUGvSQcLfRjqxvDpvCLnYXX.jpg",
-        },
-        {
-          id: 3,
-          title: "El Conde",
-          description:
-            "A morose satire about the seemingly immortal disease of dictators throughout history",
-          image:
-            "https://image.tmdb.org/t/p/original/lpgsjfL8vOfPzmLM4u5M8ivSK5A.jpg",
-        },
-      ],
+function MainView() {
+  const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
-      selectedMovie: null,
-      selectedMovie: null,
-    };
+  useEffect(() => {
+    fetch("https://donkey-archive-api.herokuapp.com/movies")
+      .then((response) => response.json())
+      .then((data) => setMovies(data));
+  }, []);
 
-    this.onMovieSelect = this.onMovieSelect.bind(this);
-  }
-
-  onMovieSelect(movie) {
-    this.setState({
-      selectedMovie: movie,
-      selectedMovieID: movie.id,
-    });
-  }
-
-  render() {
-    const { movies, selectedMovie, selectedMovieID } = this.state;
-    if (selectedMovie) {
-      return (
+  return (
+    <div>
+      <h1>Donkey Archive</h1>
+      {selectedMovie ? (
         <MovieView
           movie={selectedMovie}
-          onBackClick={() =>
-            this.setState({ selectedMovie: null, selectedMovieID: null })
-          }
+          onBackClick={() => setSelectedMovie(null)}
         />
-      );
-    }
-
-    return (
-      <div>
-        {movies.map((movie) => (
+      ) : (
+        movies.map((movie) => (
           <MovieCard
             key={movie.id}
             movie={movie}
-            onMovieSelect={() => this.onMovieSelect(movie)}
+            onMovieSelect={(movie) => setSelectedMovie(movie)}
+            showImage={true}
           />
-        ))}
-      </div>
-    );
-  }
+        ))
+      )}
+    </div>
+  );
 }
-
 export default MainView;

@@ -27330,71 +27330,51 @@ var _movieCard = require("../MovieCard/movie-card");
 var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
 var _movieView = require("../MovieView/movie-view");
 var _movieViewDefault = parcelHelpers.interopDefault(_movieView);
-class MainView extends (0, _reactDefault.default).Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            movies: [
-                {
-                    id: 1,
-                    title: "Parasite",
-                    description: "A poor family cons its way into a wealthy family's home",
-                    image: "https://image.tmdb.org/t/p/original/5aEt0PK9YRiTXNU2M03tTTveS9i.jpg"
-                },
-                {
-                    id: 2,
-                    title: "Ghost Dog",
-                    description: "A man who lives by the code of the samurai in modern Jersey City as a retained assassin for the Mafia",
-                    image: "https://image.tmdb.org/t/p/original/hrcfYUGvSQcLfRjqxvDpvCLnYXX.jpg"
-                },
-                {
-                    id: 3,
-                    title: "El Conde",
-                    description: "A morose satire about the seemingly immortal disease of dictators throughout history",
-                    image: "https://image.tmdb.org/t/p/original/lpgsjfL8vOfPzmLM4u5M8ivSK5A.jpg"
-                }
-            ],
-            selectedMovie: null,
-            selectedMovie: null
-        };
-        this.onMovieSelect = this.onMovieSelect.bind(this);
-    }
-    onMovieSelect(movie) {
-        this.setState({
-            selectedMovie: movie,
-            selectedMovieID: movie.id
-        });
-    }
-    render() {
-        const { movies, selectedMovie, selectedMovieID } = this.state;
-        if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewDefault.default), {
-            movie: selectedMovie,
-            onBackClick: ()=>this.setState({
-                    selectedMovie: null,
-                    selectedMovieID: null
-                })
-        }, void 0, false, {
-            fileName: "components/MainView/main-view.jsx",
-            lineNumber: 54,
-            columnNumber: 9
-        }, this);
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
+var _s = $RefreshSig$();
+function MainView() {
+    _s();
+    const [movies, setMovies] = (0, _react.useState)([]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        fetch("https://donkey-archive-api.herokuapp.com/movies").then((response)=>response.json()).then((data)=>setMovies(data));
+    }, []);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: "Donkey Archive"
+            }, void 0, false, {
+                fileName: "components/MainView/main-view.jsx",
+                lineNumber: 17,
+                columnNumber: 7
+            }, this),
+            selectedMovie ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewDefault.default), {
+                movie: selectedMovie,
+                onBackClick: ()=>setSelectedMovie(null)
+            }, void 0, false, {
+                fileName: "components/MainView/main-view.jsx",
+                lineNumber: 19,
+                columnNumber: 9
+            }, this) : movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
                     movie: movie,
-                    onMovieSelect: ()=>this.onMovieSelect(movie)
+                    onMovieSelect: (movie)=>setSelectedMovie(movie),
+                    showImage: true
                 }, movie.id, false, {
                     fileName: "components/MainView/main-view.jsx",
-                    lineNumber: 66,
+                    lineNumber: 25,
                     columnNumber: 11
                 }, this))
-        }, void 0, false, {
-            fileName: "components/MainView/main-view.jsx",
-            lineNumber: 64,
-            columnNumber: 7
-        }, this);
-    }
+        ]
+    }, void 0, true, {
+        fileName: "components/MainView/main-view.jsx",
+        lineNumber: 16,
+        columnNumber: 5
+    }, this);
 }
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
+_c = MainView;
 exports.default = MainView;
+var _c;
+$RefreshReg$(_c, "MainView");
 
   $parcel$ReactRefreshHelpers$a5f6.postlude(module);
 } finally {
@@ -27504,49 +27484,52 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-class MovieView extends (0, _reactDefault.default).Component {
-    render() {
-        const { movie, onBackClick } = this.props;
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                    children: movie.title
-                }, void 0, false, {
-                    fileName: "components/MovieView/movie-view.jsx",
-                    lineNumber: 8,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    children: movie.description
-                }, void 0, false, {
-                    fileName: "components/MovieView/movie-view.jsx",
-                    lineNumber: 9,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.image
-                }, void 0, false, {
-                    fileName: "components/MovieView/movie-view.jsx",
-                    lineNumber: 10,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    onClick: onBackClick,
-                    children: "Back"
-                }, void 0, false, {
-                    fileName: "components/MovieView/movie-view.jsx",
-                    lineNumber: 11,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "components/MovieView/movie-view.jsx",
-            lineNumber: 7,
-            columnNumber: 7
-        }, this);
-    }
+function MovieView(props) {
+    const { movie, onBackClick } = props;
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "movie-view",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: movie.title
+            }, void 0, false, {
+                fileName: "components/MovieView/movie-view.jsx",
+                lineNumber: 7,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: movie.description
+            }, void 0, false, {
+                fileName: "components/MovieView/movie-view.jsx",
+                lineNumber: 8,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                src: movie.image,
+                alt: movie.title
+            }, void 0, false, {
+                fileName: "components/MovieView/movie-view.jsx",
+                lineNumber: 9,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: onBackClick,
+                children: "Back"
+            }, void 0, false, {
+                fileName: "components/MovieView/movie-view.jsx",
+                lineNumber: 10,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "components/MovieView/movie-view.jsx",
+        lineNumber: 6,
+        columnNumber: 5
+    }, this);
 }
+_c = MovieView;
 exports.default = MovieView;
+var _c;
+$RefreshReg$(_c, "MovieView");
 
   $parcel$ReactRefreshHelpers$94f6.postlude(module);
 } finally {
