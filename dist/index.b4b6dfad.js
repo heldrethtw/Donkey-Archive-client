@@ -27336,7 +27336,7 @@ function MainView() {
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://donkey-archive-api.herokuapp.com/movies").then((response)=>response.json()).then((data)=>setMovies(data));
+        fetch("https://donkey-archive-af41e8314602.herokuapp.com/movies").then((response)=>response.json()).then((data)=>setMovies(data));
     }, []);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [

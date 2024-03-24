@@ -7,7 +7,7 @@ function MainView() {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://donkey-archive-api.herokuapp.com/movies")
+    fetch("https://donkey-archive-af41e8314602.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => setMovies(data));
   }, []);
