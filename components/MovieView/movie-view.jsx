@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function MovieView(props) {
   const { movie, onBackClick } = props;
@@ -11,5 +12,10 @@ function MovieView(props) {
     </div>
   );
 }
+
+MovieView.propTypes = {
+  movie: PropTypes.object.isRequired,
+  onBackClick: PropTypes.func.isRequired,
+};
 
 export default MovieView;
