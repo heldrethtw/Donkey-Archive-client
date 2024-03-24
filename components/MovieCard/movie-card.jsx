@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function MovieCard({ movie, onMovieSelect, showImage }) {
   return (
@@ -10,5 +11,11 @@ function MovieCard({ movie, onMovieSelect, showImage }) {
     </div>
   );
 }
+
+MovieCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+  onMovieSelect: PropTypes.func.isRequired,
+  showImage: PropTypes.bool.isRequired,
+};
 
 export default MovieCard;

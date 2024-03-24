@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import MovieCard from "../MovieCard/movie-card";
 import MovieView from "../MovieView/movie-view";
 
-function MainView() {
+const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     fetch("https://donkey-archive-af41e8314602.herokuapp.com/movies")
       .then((response) => response.json())
-      .then((data) => setMovies(data));
+      .then((data) => setMovies(data))
+      .catch((error) => {
+        console.error("Failed to fetch movies:", error);
+      });
   }, []);
 
   return (
@@ -32,5 +35,5 @@ function MainView() {
       )}
     </div>
   );
-}
+};
 export default MainView;
