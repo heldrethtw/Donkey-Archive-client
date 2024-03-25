@@ -17,6 +17,7 @@ const MainView = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       )
@@ -29,6 +30,11 @@ const MainView = () => {
   const handleLoggedIn = (user, token) => {
     setUser(user);
     setToken(token);
+  };
+
+  const handleLoggedOut = () => {
+    setUser(null);
+    setToken(null);
   };
 
   return (
@@ -57,10 +63,6 @@ const MainView = () => {
       )}
     </div>
   );
-};
-const handleLoggedOut = () => {
-  setUser(null);
-  setToken(null);
 };
 
 return (
