@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MovieCard from "../MovieCard/movie-card";
 import MovieView from "../MovieView/movie-view";
 import { LoginView } from "../LoginView/login-view";
+import SignUp from "../SignupView/sign-up";
 
 const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -33,20 +34,26 @@ const MainView = () => {
   return (
     <div>
       {!user ? (
-        <LoginView onLoggedIn={onLoggedIn} />
+        <>
+          <LoginView onLoggedIn={handleLoggedIn} />
+          <SignUp />
+        </>
       ) : selectedMovie ? (
         <MovieView
           movie={selectedMovie}
           onBackClick={() => setSelectedMovie(null)}
         />
       ) : (
-        movies.map((movie) => (
-          <MovieCard
-            key={movie._id}
-            movie={movie}
-            onMovieClick={setSelectedMovie}
-          />
-        ))
+        <>
+          <button onClick={handleLoggedOut}>Logout</button>
+          {movies.map((movie) => (
+            <MovieCard
+              key={movie._id}
+              movie={movie}
+              onMovieClick={setSelectedMovie}
+            />
+          ))}
+        </>
       )}
     </div>
   );
