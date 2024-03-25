@@ -11,10 +11,22 @@ const SignUp = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
+  fetch("https://donkey-archive-af41e8314602.herokuapp.com/api/auth/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ Username: email, Password: password }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your signup logic here
   };
 
   return (
