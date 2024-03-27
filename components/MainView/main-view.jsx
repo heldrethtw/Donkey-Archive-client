@@ -65,27 +65,4 @@ const MainView = () => {
   );
 };
 
-return (
-  <div>
-    {!user ? (
-      <LoginView onLoggedIn={handleLoggedIn} />
-    ) : selectedMovie ? (
-      <MovieView
-        movie={selectedMovie}
-        onBackClick={() => setSelectedMovie(null)}
-      />
-    ) : (
-      <>
-        <button onClick={handleLoggedOut}>Logout</button>
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie._id}
-            movie={movie}
-            onMovieClick={setSelectedMovie}
-          />
-        ))}
-      </>
-    )}
-  </div>
-);
 export default MainView;

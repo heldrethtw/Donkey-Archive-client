@@ -29740,9 +29740,9 @@ var _signUpDefault = parcelHelpers.interopDefault(_signUp);
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movies1, setMovies] = (0, _react.useState)([]);
-    const [selectedMovie1, setSelectedMovie1] = (0, _react.useState)(null);
-    const [user1, setUser] = (0, _react.useState)(null);
+    const [movies, setMovies] = (0, _react.useState)([]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    const [user, setUser] = (0, _react.useState)(null);
     const [token, setToken] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         if (token) fetch("https://donkey-archive-af41e8314602.herokuapp.com/api/tmbd/movies", {
@@ -29754,19 +29754,19 @@ const MainView = ()=>{
     }, [
         token
     ]);
-    const handleLoggedIn1 = (user1, token)=>{
-        setUser(user1);
+    const handleLoggedIn = (user, token)=>{
+        setUser(user);
         setToken(token);
     };
-    const handleLoggedOut1 = ()=>{
+    const handleLoggedOut = ()=>{
         setUser(null);
         setToken(null);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: !user1 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-                    onLoggedIn: handleLoggedIn1
+                    onLoggedIn: handleLoggedIn
                 }, void 0, false, {
                     fileName: "components/MainView/main-view.jsx",
                     lineNumber: 44,
@@ -29778,9 +29778,9 @@ const MainView = ()=>{
                     columnNumber: 11
                 }, undefined)
             ]
-        }, void 0, true) : selectedMovie1 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewDefault.default), {
-            movie: selectedMovie1,
-            onBackClick: ()=>setSelectedMovie1(null)
+        }, void 0, true) : selectedMovie ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewDefault.default), {
+            movie: selectedMovie,
+            onBackClick: ()=>setSelectedMovie(null)
         }, void 0, false, {
             fileName: "components/MainView/main-view.jsx",
             lineNumber: 48,
@@ -29788,16 +29788,16 @@ const MainView = ()=>{
         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    onClick: handleLoggedOut1,
+                    onClick: handleLoggedOut,
                     children: "Logout"
                 }, void 0, false, {
                     fileName: "components/MainView/main-view.jsx",
                     lineNumber: 54,
                     columnNumber: 11
                 }, undefined),
-                movies1.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
+                movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
                         movie: movie,
-                        onMovieClick: setSelectedMovie1
+                        onMovieClick: setSelectedMovie
                     }, movie._id, false, {
                         fileName: "components/MainView/main-view.jsx",
                         lineNumber: 56,
@@ -29815,45 +29815,7 @@ _s(MainView, "ld1mNqbzEgxPu9ZfASjBJ7ZrUMw=");
 _c = MainView;
 exports.default = MainView;
 var _c;
-return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-    children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-        onLoggedIn: handleLoggedIn
-    }, void 0, false, {
-        fileName: "components/MainView/main-view.jsx",
-        lineNumber: 71,
-        columnNumber: 7
-    }, undefined) : selectedMovie ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewDefault.default), {
-        movie: selectedMovie,
-        onBackClick: ()=>setSelectedMovie(null)
-    }, void 0, false, {
-        fileName: "components/MainView/main-view.jsx",
-        lineNumber: 73,
-        columnNumber: 7
-    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: handleLoggedOut,
-                children: "Logout"
-            }, void 0, false, {
-                fileName: "components/MainView/main-view.jsx",
-                lineNumber: 79,
-                columnNumber: 9
-            }, undefined),
-            movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
-                    movie: movie,
-                    onMovieClick: setSelectedMovie
-                }, movie._id, false, {
-                    fileName: "components/MainView/main-view.jsx",
-                    lineNumber: 81,
-                    columnNumber: 11
-                }, undefined))
-        ]
-    }, void 0, true)
-}, void 0, false, {
-    fileName: "components/MainView/main-view.jsx",
-    lineNumber: 69,
-    columnNumber: 3
-}, undefined);
+$RefreshReg$(_c, "MainView");
 
   $parcel$ReactRefreshHelpers$a5f6.postlude(module);
 } finally {
