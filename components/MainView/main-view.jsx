@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import MovieCard from "../MovieCard/movie-card";
 import MovieView from "../MovieView/movie-view";
 import { LoginView } from "../LoginView/login-view";
-import SignUp from "../SignupView/sign-up";
+import SignUp from "../SignupView/signup-view";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -38,11 +40,15 @@ const MainView = () => {
   };
 
   return (
-    <div>
+    <Row>
       {!user ? (
         <>
-          <LoginView onLoggedIn={handleLoggedIn} />
-          <SignUp />
+          <Col>
+            <LoginView onLoggedIn={handleLoggedIn} />
+          </Col>
+          <Col>
+            <SignUp />
+          </Col>
         </>
       ) : selectedMovie ? (
         <MovieView
@@ -51,17 +57,17 @@ const MainView = () => {
         />
       ) : (
         <>
-          <button onClick={handleLoggedOut}>Logout</button>
+          <Col>
+            <button onClick={handleLoggedOut}>Logout</button>
+          </Col>
           {movies.map((movie) => (
-            <MovieCard
-              key={movie._id}
-              movie={movie}
-              onMovieClick={setSelectedMovie}
-            />
+            <Col key={movie._id}>
+              <MovieCard movie={movie} onMovieClick={setSelectedMovie} />
+            </Col>
           ))}
         </>
       )}
-    </div>
+    </Row>
   );
 };
 
