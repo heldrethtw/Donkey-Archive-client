@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import MovieCard from "../MovieCard/movie-card";
 import MovieView from "../MovieView/movie-view";
 import { LoginView } from "../LoginView/login-view";
-import SignUp from "../SignupView/signup-view";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import SignUp from "../SignupView/sign-up";
 
 const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -40,15 +38,11 @@ const MainView = () => {
   };
 
   return (
-    <Row>
+    <div>
       {!user ? (
         <>
-          <Col>
-            <LoginView onLoggedIn={handleLoggedIn} />
-          </Col>
-          <Col>
-            <SignUp />
-          </Col>
+          <LoginView onLoggedIn={handleLoggedIn} />
+          <SignUp />
         </>
       ) : selectedMovie ? (
         <MovieView
@@ -57,18 +51,41 @@ const MainView = () => {
         />
       ) : (
         <>
-          <Col>
-            <button onClick={handleLoggedOut}>Logout</button>
-          </Col>
+          <button onClick={handleLoggedOut}>Logout</button>
           {movies.map((movie) => (
-            <Col key={movie._id}>
-              <MovieCard movie={movie} onMovieClick={setSelectedMovie} />
-            </Col>
+            <MovieCard
+              key={movie._id}
+              movie={movie}
+              onMovieClick={setSelectedMovie}
+            />
           ))}
         </>
       )}
-    </Row>
+    </div>
   );
 };
 
+return (
+  <div>
+    {!user ? (
+      <LoginView onLoggedIn={handleLoggedIn} />
+    ) : selectedMovie ? (
+      <MovieView
+        movie={selectedMovie}
+        onBackClick={() => setSelectedMovie(null)}
+      />
+    ) : (
+      <>
+        <button onClick={handleLoggedOut}>Logout</button>
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie._id}
+            movie={movie}
+            onMovieClick={setSelectedMovie}
+          />
+        ))}
+      </>
+    )}
+  </div>
+);
 export default MainView;

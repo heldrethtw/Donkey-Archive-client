@@ -1,13 +1,17 @@
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container } from "react-bootstrap";
-import React from "react";
 import "./index.scss";
 import MainView from "../components/MainView/main-view";
 
-ReactDOM.render(
-  <Container>
-    <MainView />
-  </Container>,
-  document.getElementById("root")
-);
+const DonkeyArchiveApplication = () => {
+  return (
+    <div className="donkey-archive">
+      <h1>Donkey Archive</h1>
+    </div>
+  );
+};
+
+const container = document.querySelector("#root");
+const root = createRoot(container);
+
+root.render(<MainView />);
