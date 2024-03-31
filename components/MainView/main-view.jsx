@@ -5,6 +5,9 @@ import { LoginView } from "../LoginView/login-view";
 import SignUp from "../SignupView/signup-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NavigationBar from "../NavigationBar/navigation-bar";
+import ProfileView from "../ProfileView/profile-view";
 
 const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -40,34 +43,68 @@ const MainView = () => {
   };
 
   return (
-    <Row>
-      {!user ? (
-        <>
-          <Col>
-            <LoginView onLoggedIn={handleLoggedIn} />
-          </Col>
-          <Col>
-            <SignUp />
-          </Col>
-        </>
-      ) : selectedMovie ? (
-        <MovieView
-          movie={selectedMovie}
-          onBackClick={() => setSelectedMovie(null)}
-        />
-      ) : (
-        <>
-          <Col>
-            <button onClick={handleLoggedOut}>Logout</button>
-          </Col>
-          {movies.map((movie) => (
-            <Col key={movie._id}>
-              <MovieCard movie={movie} onMovieClick={setSelectedMovie} />
-            </Col>
-          ))}
-        </>
-      )}
-    </Row>
+    <NavigationBar>
+      <BrowserRouter>
+        <Row>
+          <Routes className="justify-content-md-center">
+            {!user ? (
+              <>
+                <Col>
+                  <LoginView onLoggedIn={handleLoggedIn} />
+                </Col>
+                <Col>
+                  <SignUp />
+                </Col>
+              </>
+            ) : (
+              <>
+                <Route
+                  path="/"
+                  element={
+                    selectedMovie ? (
+                      <MovieView
+                        movie={selectedMovie}
+                        onBackClick={() => setSelectedMovie(null)}
+                      />
+                    ) : (
+                      <>
+                        <Col>
+                          <button onClick={handleLoggedOut}>Logout</button>
+                        </Col>
+                        <Col>
+                          <Link to="/">Home</Link>
+                        </Col>
+                        <Col>
+                          <Link to="/profile">Profile</Link>
+                        </Col>
+                        {movies.map((movie) => (
+                          <Col key={movie._id}>
+                            <MovieCard
+                              movie={movie}
+                              onMovieClick={setSelectedMovie}
+                            />
+                          </Col>
+                        ))}
+                      </>
+                    )
+                  }
+                />
+                <Route path="/profile" element={<ProfileView />} />
+              </>
+            )}
+            {!user && (
+              <>
+                <Route
+                  path="/login"
+                  element={<LoginView onLoggedIn={handleLoggedIn} />}
+                />
+                <Route path="/signup" element={<SignUp />} />
+              </>
+            )}
+          </Routes>
+        </Row>
+      </BrowserRouter>
+    </NavigationBar>
   );
 };
 
