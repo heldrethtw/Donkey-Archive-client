@@ -5,7 +5,7 @@ import { LoginView } from "../LoginView/login-view";
 import SignUp from "../SignupView/signup-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import NavigationBar from "../NavigationBar/navigation-bar";
 import ProfileView from "../ProfileView/profile-view";
 
@@ -42,19 +42,36 @@ const MainView = () => {
     setToken(null);
   };
 
+  const handleRemoveMovie = (movieToRemove) => {
+    // Here you can add logic to remove a movie from the list or backend
+    setMovies(movies.filter((movie) => movie._id !== movieToRemove._id));
+  };
+
   return (
-    <NavigationBar>
-      <BrowserRouter>
-        <Row>
-          <Routes className="justify-content-md-center">
+    <BrowserRouter>
+      <NavigationBar>
+        <Row className="justify-content-md-center">
+          <Routes>
             {!user ? (
               <>
-                <Col>
-                  <LoginView onLoggedIn={handleLoggedIn} />
-                </Col>
-                <Col>
-                  <SignUp />
-                </Col>
+                <Route
+                  path="/login"
+                  element={<LoginView onLoggedIn={handleLoggedIn} />}
+                />
+                <Route path="/signup" element={<SignUp />} />
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <Col>
+                        <LoginView onLoggedIn={handleLoggedIn} />
+                      </Col>
+                      <Col>
+                        <SignUp />
+                      </Col>
+                    </>
+                  }
+                />
               </>
             ) : (
               <>
@@ -81,7 +98,9 @@ const MainView = () => {
                           <Col key={movie._id}>
                             <MovieCard
                               movie={movie}
-                              onMovieClick={setSelectedMovie}
+                              onMovieSelect={setSelectedMovie}
+                              showImage={true}
+                              onRemoveMovie={handleRemoveMovie}
                             />
                           </Col>
                         ))}
@@ -92,19 +111,10 @@ const MainView = () => {
                 <Route path="/profile" element={<ProfileView />} />
               </>
             )}
-            {!user && (
-              <>
-                <Route
-                  path="/login"
-                  element={<LoginView onLoggedIn={handleLoggedIn} />}
-                />
-                <Route path="/signup" element={<SignUp />} />
-              </>
-            )}
           </Routes>
         </Row>
-      </BrowserRouter>
-    </NavigationBar>
+      </NavigationBar>
+    </BrowserRouter>
   );
 };
 
