@@ -42,36 +42,19 @@ const MainView = () => {
     setToken(null);
   };
 
-  const handleRemoveMovie = (movieToRemove) => {
-    // Here you can add logic to remove a movie from the list or backend
-    setMovies(movies.filter((movie) => movie._id !== movieToRemove._id));
-  };
-
   return (
     <BrowserRouter>
       <NavigationBar>
-        <Row className="justify-content-md-center">
-          <Routes>
+        <Row>
+          <Routes className="justify-content-md-center">
             {!user ? (
               <>
-                <Route
-                  path="/login"
-                  element={<LoginView onLoggedIn={handleLoggedIn} />}
-                />
-                <Route path="/signup" element={<SignUp />} />
-                <Route
-                  path="/"
-                  element={
-                    <>
-                      <Col>
-                        <LoginView onLoggedIn={handleLoggedIn} />
-                      </Col>
-                      <Col>
-                        <SignUp />
-                      </Col>
-                    </>
-                  }
-                />
+                <Col>
+                  <LoginView onLoggedIn={handleLoggedIn} />
+                </Col>
+                <Col>
+                  <SignUp />
+                </Col>
               </>
             ) : (
               <>
@@ -98,9 +81,7 @@ const MainView = () => {
                           <Col key={movie._id}>
                             <MovieCard
                               movie={movie}
-                              onMovieSelect={setSelectedMovie}
-                              showImage={true}
-                              onRemoveMovie={handleRemoveMovie}
+                              onMovieClick={setSelectedMovie}
                             />
                           </Col>
                         ))}
@@ -109,6 +90,15 @@ const MainView = () => {
                   }
                 />
                 <Route path="/profile" element={<ProfileView />} />
+              </>
+            )}
+            {!user && (
+              <>
+                <Route
+                  path="/login"
+                  element={<LoginView onLoggedIn={handleLoggedIn} />}
+                />
+                <Route path="/signup" element={<SignUp />} />
               </>
             )}
           </Routes>
