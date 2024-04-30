@@ -6,11 +6,10 @@ import "./index.scss";
 import { BrowserRouter } from "react-router-dom";
 import MainView from "../components/MainView/main-view";
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Container>
       <MainView />
     </Container>
-  </BrowserRouter>,
-  document.getElementById("root")
+  </BrowserRouter>
 );
