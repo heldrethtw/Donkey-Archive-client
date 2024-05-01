@@ -2963,7 +2963,7 @@ var _indexScss = require("./index.scss");
 var _reactRouterDom = require("react-router-dom");
 var _mainView = require("../components/MainView/main-view");
 var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
-(0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
+(0, _reactDomDefault.default).createRoot(document.getElementById("root")).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainViewDefault.default), {}, void 0, false, {
             fileName: "src/index.jsx",
@@ -2979,7 +2979,7 @@ var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
     fileName: "src/index.jsx",
     lineNumber: 10,
     columnNumber: 3
-}, undefined), document.getElementById("root"));
+}, undefined));
 
   $parcel$ReactRefreshHelpers$98a3.postlude(module);
 } finally {
@@ -41147,7 +41147,7 @@ const NavigationBar = ()=>{
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                 as: (0, _reactRouterDom.Link),
                                 to: "/movies",
-                                children: "movies"
+                                children: "MOVIES"
                             }, void 0, false, {
                                 fileName: "components/NavigationBar/navigation-bar.jsx",
                                 lineNumber: 15,
@@ -41156,7 +41156,7 @@ const NavigationBar = ()=>{
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                 as: (0, _reactRouterDom.Link),
                                 to: "/profile",
-                                children: "profile"
+                                children: "PROFILE"
                             }, void 0, false, {
                                 fileName: "components/NavigationBar/navigation-bar.jsx",
                                 lineNumber: 18,
