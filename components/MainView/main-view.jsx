@@ -5,7 +5,7 @@ import { LoginView } from "../LoginView/login-view";
 import SignUp from "../SignupView/signup-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import NavigationBar from "../NavigationBar/navigation-bar";
 import ProfileView from "../ProfileView/profile-view";
 
