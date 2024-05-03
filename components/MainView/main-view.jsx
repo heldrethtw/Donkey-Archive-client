@@ -46,60 +46,41 @@ const MainView = () => {
     <NavigationBar>
       <Row className="justify-content-md-center">
         <Routes>
-          {!user ? (
-            <>
-              <Col>
-                <LoginView onLoggedIn={handleLoggedIn} />
-              </Col>
-              <Col>
-                <SignUp />
-              </Col>
-            </>
-          ) : (
-            <>
-              <Route
-                path="/"
-                element={
-                  selectedMovie ? (
-                    <MovieView
-                      movie={selectedMovie}
-                      onBackClick={() => setSelectedMovie(null)}
+          <Route
+            path="/"
+            element={
+              !user ? (
+                <Col>
+                  <LoginView onLoggedIn={handleLoggedIn} />
+                  <SignUp />
+                </Col>
+              ) : selectedMovie ? (
+                <MovieView
+                  movie={selectedMovie}
+                  onBackClick={() => setSelectedMovie(null)}
+                />
+              ) : (
+                <Col>
+                  <button onClick={handleLoggedOut}>Logout</button>
+                  <Link to="/">Home</Link>
+                  <Link to="/profile">Profile</Link>
+                  {movies.map((movie) => (
+                    <MovieCard
+                      key={movie._id}
+                      movie={movie}
+                      onMovieClick={setSelectedMovie}
                     />
-                  ) : (
-                    <>
-                      <Col>
-                        <button onClick={handleLoggedOut}>Logout</button>
-                      </Col>
-                      <Col>
-                        <Link to="/">Home</Link>
-                      </Col>
-                      <Col>
-                        <Link to="/profile">Profile</Link>
-                      </Col>
-                      {movies.map((movie) => (
-                        <Col key={movie._id}>
-                          <MovieCard
-                            movie={movie}
-                            onMovieClick={setSelectedMovie}
-                          />
-                        </Col>
-                      ))}
-                    </>
-                  )
-                }
-              />
-              <Route path="/profile" element={<ProfileView />} />
-            </>
-          )}
-          {!user && (
-            <>
-              <Route
-                path="/login"
-                element={<LoginView onLoggedIn={handleLoggedIn} />}
-              />
-              <Route path="/signup" element={<SignUp />} />
-            </>
-          )}
+                  ))}
+                </Col>
+              )
+            }
+          />
+          <Route path="/profile" element={<ProfileView />} />
+          <Route
+            path="/login"
+            element={<LoginView onLoggedIn={handleLoggedIn} />}
+          />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Row>
     </NavigationBar>
