@@ -1,11 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "react";
-import movieReducer from "./reducers/movie-reducer";
+import rootReducer from "../rootReducer";
 
 export default configureStore({
-    reducer: {
-        user: userReducer,
-        movie: movieReducer,
-    },
+    reducer: rootReducer,
 });
-

@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
-import App from "./app";
-import { store } from "./app/store";
+import MainView from "../components/MainView/main-view";
+import store from "./app/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +14,7 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Container>
-          <App />
+          <MainView />
         </Container>
       </BrowserRouter>
     </Provider>
