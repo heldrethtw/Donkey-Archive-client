@@ -42678,7 +42678,7 @@ exports.default = (0, _toolkit.configureStore)({
     reducer: (0, _rootReducerDefault.default)
 });
 
-},{"@reduxjs/toolkit":"fuua8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../rootReducer":"5X6AJ"}],"fuua8":[function(require,module,exports) {
+},{"@reduxjs/toolkit":"fuua8","../rootReducer":"5X6AJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fuua8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ReducerType", ()=>ReducerType);
