@@ -13,7 +13,7 @@ import NavigationBar from "../NavigationBar/navigation-bar";
 import ProfileView from "../ProfileView/profile-view";
 
 const MainView = () => {
-  const { user, token } = userSelector((state) => state.user);
+  const { user, token } = useSelector((state) => state.user);
   const { movies, selectedMovie } = userSelector((state) => state.movies);
   const dispatch = useDispatch();
 
