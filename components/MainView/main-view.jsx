@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser, logout } from "../../src/users/userSlice";
+import { setMovies, setSelectedMovie, clearMovies } from "../../src/app/store";
 import MovieCard from "../MovieCard/movie-card";
 import MovieView from "../MovieView/movie-view";
 import { LoginView } from "../LoginView/login-view";
@@ -10,10 +13,9 @@ import NavigationBar from "../NavigationBar/navigation-bar";
 import ProfileView from "../ProfileView/profile-view";
 
 const MainView = () => {
-  const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const { user, token } = userSelector((state) => state.user);
+  const { movies, selectedMovie } = userSelector((state) => state.movies);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (token) {
@@ -30,16 +32,15 @@ const MainView = () => {
         .then((data) => setMovies(data))
         .catch((error) => console.error("Failed to fetch movies", error));
     }
-  }, [token]);
+  }, [token, dispatch]);
 
   const handleLoggedIn = (user, token) => {
-    setUser(user);
-    setToken(token);
+    dispatch(setUser(user, token));
   };
 
   const handleLoggedOut = () => {
-    setUser(null);
-    setToken(null);
+    dispatch(logout());
+    dispatch(clearMovies());
   };
 
   return (

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../src/users/userSlice";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,6 +22,7 @@ export const LoginView = ({ onLoggedIn }) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.user) {
+          dispatch(setUser(data.user, data.token));
           onLoggedIn(data.user, data.token);
         } else {
           alert("Incorrect username or password");
